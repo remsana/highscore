@@ -1,0 +1,41 @@
+<section>
+  <div class="game-card">
+    <div class="row game-card-row">
+      <div class="col-4">
+        <div>
+          <img src="<%= game.image_url %>" alt="" class="details-img" />
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <p class="col-8 fs-5 fw-bold"><%= game.name %></p>
+          <p class="col-8"><%= game.extract %>, <%= game.game_type %></p>
+          <p class="col-8"><%= game.description %></p>
+        </div>
+      </div>
+
+      <!-- this part is the highscores for each game. Now i have hardcoded it, will change it later. Also the class game-card-row does not work for this, may be some margin or padding is required.-->
+      <div class="col">
+        <div class="row">
+          <h1 class="text-center">High scores</h1>
+        </div>
+        <div class="row game-card-row">
+          <div class="col">
+            <div class="row">
+              <p class="col-10">John Doe, 2022-01-01</p>
+              <p class="col-2 float-end">1 202 202</p>
+            </div>
+          </div>
+        </div>
+        <div class="row game-card-row">
+            <div class="col">
+              <div class="row">
+                <p class="col-10">jane Doe, 2022-02-02</p>
+                <p class="col-2 float-end">202 202</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

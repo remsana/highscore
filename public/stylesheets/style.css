@@ -1,0 +1,57 @@
+.body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.site-footer, .site-header, .divContainer {
+  border: 2px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 10px;    
+}
+
+.headerform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* form */
+.d-flex {
+margin: 10px 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: auto;
+}
+
+.img-thumbnail {  
+  height: 120px;
+  width: 250px
+}
+
+.game-card {
+padding: 20px;
+margin: 15px;
+/* border: 1px black solid; */
+}
+
+.game-card-row{
+  border: 1px black solid;
+  margin: 10px 0;
+}
+
+.image-search {
+  margin: 10px 0;
+}
+
+.details-img {
+height: 280px;
+width: 280px;
+padding: 10px;
+
+}

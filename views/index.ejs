@@ -1,0 +1,18 @@
+<section>
+  
+  <h1 class="text-center mb-4">Highscores</h1>
+  <div class="game-card">
+    <% scores.forEach(score => { %>
+      <a href="/games/">
+    <div class="row game-card-row">
+      <p class="col-9 fs-3 fw-bold"><%= score.game_name %></p>
+      <p class="col-3 text-end fs-3 fw-bold"><%= score.score %></p>
+      <div class="row">
+        <p class="fs-4"><%= score.gamer %>, <%= score.date %></p>
+      </div>
+    </div>
+  </a>
+    <% }) %>
+  </div>
+
+</section>

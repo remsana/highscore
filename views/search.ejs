@@ -1,0 +1,24 @@
+<section>
+  <h1 class="text-center mb-4">Hittade <%= games.length %> träffar på "<%= searchTerm %>"</h1>
+  <div class="game-card">
+    <% games.forEach(game => { %>
+      <a href="/games/<%= game.url_slug %>">
+    <div class="row game-card-row">
+      <div class="col-9">
+        <div class="row">
+          <p class="col-9 fs-5 fw-bold"><%= game.name %></p>
+          <p class="col-9 fs-6">
+            <%= game.game_type %>, <%= game.extract %>
+          </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div>
+          <img src="<%= game.image_url %>" alt="" class="rounded float-end image-search" />
+        </div>
+      </div>
+    </div>
+  </a>
+    <% }) %>
+  </div>
+</section>
