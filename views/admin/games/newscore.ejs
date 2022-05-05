@@ -1,0 +1,31 @@
+<section>
+  <div class="game-card">
+    <h1>Nytt highscore</h1>
+    <form class="row">
+      <div class="col-12">
+        <label for="inputGame" class="form-label fs-5">Spel</label>
+        <select id="inputGame" class="form-select">
+          <option selected disabled hidden value="choose">Välj spel</option>
+          <option value="1">Asteroids</option>
+          <option value="2">Pac-Man</option>
+          <option value="3">Donkey Kong</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="player" class="form-label fs-5">Spelare</label>
+        <input type="text" class="form-control" id="player" />
+      </div>
+      <div class="col-12">
+        <label for="scoreDate" class="form-label fs-5">Datum</label>
+        <input type="date" class="form-control" id="scoreDate" />
+      </div>
+      <div class="col-12">
+        <label for="theScore" class="form-label fs-5">Poäng</label>
+        <input type="number" min="0" class="form-control" id="theScore" />
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary submitButton">Lägg Till</button>
+      </div>
+    </form>
+  </div>
+</section>

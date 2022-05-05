@@ -1,0 +1,41 @@
+<section>
+    <div class="game-card">
+<h1>Nytt Spel</h1>
+
+<form class="row">
+    <div class="col-12">
+      <label for="title" class="form-label fs-5">Titel</label>
+      <input type="text" class="form-control" id="title">
+    </div>
+    <div class="col-12">
+      <label for="description" class="form-label fs-5">Beskrivning</label>
+      <textarea
+            name="description"
+            class="form-control"
+        ></textarea>
+      </div>   
+    <div class="col-12">
+      <label for="newgameimage" class="form-label fs-5">Bild</label>
+      <input type="text" class="form-control" id="newgameimage">
+    </div> 
+    
+    <div class="col-12">
+      <label for="inputGenre" class="form-label fs-5">Genre</label>
+      <select id="inputGenre" class="form-select">
+        <option selected disabled hidden value="choose">Choose Genre</option>
+        <option value="1">Acion</option>
+        <option value="2">Puzzle</option>
+        <option value="3">Shooting</option>
+        <option value="4">Other</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="launchYear" class="form-label fs-5">Lanseringsår</label>
+      <input type="date" class="form-control" id="launchYear">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary submitButton">Lägg Till</button>
+    </div>
+  </form>
+</div>
+</section>

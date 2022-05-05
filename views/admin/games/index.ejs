@@ -1,0 +1,31 @@
+<div class="row">
+    <h1 class="col-8">Spel</h1>
+    <a class="col-2" href="/admin/games/newgame" >
+        <button class="btn btn-primary">Nytt spel</button>
+        
+    </a>
+    <a class="col-2" href="/admin/games/newscore">
+        <button class="btn btn-primary">Nytt score</button>
+    </a>     
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Lanseringsår</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% games.forEach(game => { %>
+            <tr>
+                <td><%= game.id %></td>
+                <td><%= game.name %></td>
+                <td><%= game.game_type %></td>
+                <td><%= game.extract %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
