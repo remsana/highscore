@@ -25,43 +25,6 @@ app.locals.db = new Pool({
   database: "highscore"  
 });
 
-app.locals.scores = [
-  {
-    id: 1,
-    game_name: "Tetris",
-    date: "2022-01-01",
-    player: "John Doe",
-    score: "2 200 200",
-  },
-  {
-    id: 2,
-    game_name: "Pac-Man",
-    date: "2022-03-01",
-    player: "Jane Doe",
-    score: "200 200",
-  },
-  {
-    id: 3,
-    game_name: "Donkey Kong",
-    date: "2022-02-05",
-    player: "Jim Doe",
-    score: "987 200",
-  },
-  {
-    id: 4,
-    game_name: "Cabal",
-    date: "2022-02-18",
-    player: "Jack Doe",
-    score: "1 180 200",
-  },
-  {
-    id: 5,
-    game_name: "Asteroids",
-    date: "2022-04-30",
-    player: "Jake Doe",
-    score: "3 987 200",
-  }
-];
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

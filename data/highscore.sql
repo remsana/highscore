@@ -37,27 +37,28 @@ SELECT
  --creating a table fr scores
 
 CREATE TABLE scores (
-    id INTEGER GENERATED ALWAYS AS IDENTITY,
-    game_name VARCHAR (50) NOT NULL,
-    date DATE NOT NULL,
+    id INTEGER GENERATED ALWAYS AS IDENTITY, 
+	game_id INTEGER,
+    score_date DATE NOT NULL,
     player VARCHAR (50) NOT NULL,
-    score INTEGER(50) NOT NULL,
-    FOREIGN KEY (game_name)
-    REFERENCES games (name),    
+    score INTEGER NOT NULL,
+    FOREIGN KEY (game_id)
+    REFERENCES games (id),    
     PRIMARY KEY (id)
 );
 
+
 --inserting some scores
 
-INSERT INTO scores (game_id, date, player, score)
+INSERT INTO scores (game_id, score_date, player, score)
 VALUES
-(1, '01-02-2022', 'Jon Snow', '205689'),
-(1, '01-03-2022', 'Jane Patrick', '2056890'),
-(1, '01-04-2022', 'Sheldon Cooper', '1205689'),
-(2, '05-02-2022', 'John Doe', '2050689'),
-(2, '01-05-2022', 'Jack and Jill', '35689'),
-(2, '01-01-2022', 'Peppa Pig', '605689'),
-(3, '01-04-2022', 'Jack Doe', '785689'),
-(3, '03-03-2022', 'Jim Snow', '966689'),
-(3, '04-04-2022', 'Jake Doe', '2582689')
+(1, '2022-05-01', 'Jon Snow', '205689'),
+(1, '2022-04-30', 'Jane Patrick', '2056890'),
+(1, '2022-01-15', 'Sheldon Cooper', '1205689'),
+(2, '2021-12-31', 'John Doe', '2050689'),
+(2, '2022-03-29', 'Jack and Jill', '35689'),
+(2, '2022-02-28', 'Peppa Pig', '605689'),
+(3, '2021-11-30', 'Jack Doe', '785689'),
+(3, '2022-04-29', 'Jim Snow', '966689'),
+(3, '2021-10-30', 'Jake Doe', '2582689')
 

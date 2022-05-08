@@ -6,9 +6,9 @@
       <a href="/games/<%= score.url_slug %>">
     <div class="row game-card-row">
       <p class="col-9 fs-3 fw-bold"><%= score.name %></p>
-      <p class="col-3 text-end fs-3 fw-bold"><%= score.score %></p>
+      <p class="col-3 text-end fs-3 fw-bold"><%= score.score.toLocaleString("fi-FI") %></p>
       <div class="row">
-        <p class="fs-4"><%= score.player %>, <%= score.date %></p>
+        <p class="fs-4"><%= score.player %>, <%= score.score_date %></p>
       </div>
     </div>
   </a>

@@ -6,9 +6,10 @@
         <label for="inputGame" class="form-label fs-5">Spel</label>
         <select id="inputGame" class="form-select">
           <option selected disabled hidden value="choose">Välj spel</option>
-          <option value="1">Asteroids</option>
-          <option value="2">Pac-Man</option>
-          <option value="3">Donkey Kong</option>
+          <% games.forEach(game => { %>
+            <option value="<%=game.name%>"><%=game.name%></option>          
+            <% }) %>
+                    
         </select>
       </div>
       <div class="col-12">

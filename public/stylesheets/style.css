@@ -37,7 +37,6 @@ width: auto;
 .game-card {
 padding: 20px;
 margin: 15px;
-/* border: 1px black solid; */
 }
 
 .game-card-row{
@@ -52,8 +51,6 @@ margin: 15px;
 .details-img {
 height: 280px;
 width: 280px;
-padding: 10px;
-
 }
 
 .submitButton {

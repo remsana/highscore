@@ -11,7 +11,7 @@ router.get('/', async function (req, res) {
   const sql = `
     SELECT id,
            name,
-           EXTRACT(YEAR FROM launch_year),
+           EXTRACT(YEAR FROM launch_year) as year,
            game_type,
            description,
            image_url,

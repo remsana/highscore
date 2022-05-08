@@ -8,7 +8,7 @@ router.get("/", async function (req, res) {
   const sql = `
     SELECT id,
            name,
-           EXTRACT(YEAR FROM launch_year),
+           EXTRACT(YEAR FROM launch_year) as year,
            game_type,
            description,
            image_url,
@@ -31,8 +31,24 @@ router.get("/newgame", async function (req, res) {
 
 // GET http://localhost:3000/admin/games/newscore => newscore.ejs
 router.get("/newscore", async function (req, res) {
+
+  const db = req.app.locals.db;
+
+  const sql = `
+  SELECT DISTINCT 
+  name
+  FROM scores s
+  INNER JOIN games g
+  ON s.game_id = g.id  
+    `;
+
+  const result = await db.query(sql);
+  const games = result.rows;
+
+
   res.render("admin/games/newscore", {
     title: "ny score - Admin",
+    games
   });
 });
 
