@@ -16,7 +16,7 @@ router.get("/:urlSlug", async function (req, res) {
     image_url,
     url_slug,
     player,
-    score_date,
+    TO_CHAR(score_date,'YYYY-MM-DD') score_date,
     score
   FROM games g
   INNER JOIN scores s

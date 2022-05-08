@@ -14,7 +14,7 @@ router.get("/", async function (req, res) {
   DISTINCT ON (name) name,
     score, 
     player,
-    score_date,
+    TO_CHAR(score_date,'YYYY-MM-DD') score_date,
     url_slug
 FROM
    scores s
