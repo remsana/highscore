@@ -18,16 +18,22 @@
         <div class="row">
           <h1 class="text-center">High scores</h1>
         </div>
-        <% games.forEach(game => { %>
-        <div class="row">
-          <div class="col">
-            <div class="row game-card-row">
-              <p class="col-10"><%= game.player %>, <%= game.score_date %></p>
-              <p class="col-2 float-end"><%= game.score.toLocaleString("fi-FI") %></p>
+        <!-- If there are no highscores for a particular game, the details of the game should be displayed and a message  should also be shown that there are no highscores for the game -->
+        <% if (game.score) { %>
+          <% games.forEach(game => { %>
+            <div class="row">
+              <div class="col">
+                <div class="row game-card-row">
+                  <p class="col-10"><%= game.player %>, <%= game.score_date %></p>
+                  <p class="col-2 float-end"><%= game.score.toLocaleString("fi-FI") %></p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <% }) %>        
+            <% }) %>    
+       <% } else { %>
+        <p class="col-10">Det finns inga highscore for <%= game.name %></p>
+       <% } %>
+            
       </div>
     </div>
   </div>

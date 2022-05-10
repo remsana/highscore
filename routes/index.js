@@ -3,12 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", async function (req, res) {
-  const db = req.app.locals.db;
 
-
+  const db = req.app.locals.db; 
   
-  // need to fix the display of date
-
   const sql = `
   SELECT
   DISTINCT ON (name) name,
@@ -16,15 +13,16 @@ router.get("/", async function (req, res) {
     player,
     TO_CHAR(score_date,'YYYY-MM-DD') score_date,
     url_slug
-FROM
+  FROM
    scores s
-INNER JOIN games g
-ON s.game_id = g.id
-ORDER BY
+  LEFT JOIN games g
+  ON s.game_id = g.id
+  ORDER BY
     name, score DESC
   `;
 
   const result = await db.query(sql);
+  
   const scores = result.rows;  
 
   res.render("index", 

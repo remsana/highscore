@@ -1,28 +1,28 @@
 <section>
   <div class="game-card">
     <h1>Nytt highscore</h1>
-    <form class="row">
+    <form class="row" method="post">
       <div class="col-12">
         <label for="inputGame" class="form-label fs-5">Spel</label>
-        <select id="inputGame" class="form-select">
+        <select id="inputGame" class="form-select" name="name">
           <option selected disabled hidden value="choose">Välj spel</option>
           <% games.forEach(game => { %>
-            <option value="<%=game.name%>"><%=game.name%></option>          
+            <option name="<%=game.name%>"><%=game.name%></option>          
             <% }) %>
                     
         </select>
       </div>
       <div class="col-12">
-        <label for="player" class="form-label fs-5">Spelare</label>
-        <input type="text" class="form-control" id="player" />
+        <label for="playerName" class="form-label fs-5">Spelare</label>
+        <input type="text" class="form-control" id="playerName" name="player" />
       </div>
       <div class="col-12">
         <label for="scoreDate" class="form-label fs-5">Datum</label>
-        <input type="date" class="form-control" id="scoreDate" />
+        <input type="date" class="form-control" id="scoreDate" name="score_date" />
       </div>
       <div class="col-12">
         <label for="theScore" class="form-label fs-5">Poäng</label>
-        <input type="number" min="0" class="form-control" id="theScore" />
+        <input type="number" min="0" class="form-control" id="theScore" name="score" />
       </div>
       <div class="col-12">
         <button class="btn btn-primary submitButton">Lägg Till</button>

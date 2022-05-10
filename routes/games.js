@@ -19,7 +19,7 @@ router.get("/:urlSlug", async function (req, res) {
     TO_CHAR(score_date,'YYYY-MM-DD') score_date,
     score
   FROM games g
-  INNER JOIN scores s
+  LEFT JOIN scores s
   ON g.id = s.game_id
   WHERE url_slug = $1
   ORDER BY score DESC
