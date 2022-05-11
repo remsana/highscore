@@ -22,20 +22,18 @@ VALUES
 ('Cabal', '01-01-2005', 'Shooting', 'Praesent iaculis lorem purus, vitae pellentesque orci finibus.', 'https://via.placeholder.com/80x80.png?text=Cabal', 'cabal')
 
 
---the extract funcion has been used to convert the date to year.
---when using in views it must be thus referred to as game.extract and not game.launch_year
+--the extract funcion has been used to extract only year.
 SELECT 
     id,
     name,
-    EXTRACT(YEAR FROM launch_year),
+    EXTRACT(YEAR FROM launch_year) launch_year,
     game_type,
     description,
     image_url,
     url_slug
  FROM games
 
- --creating a table fr scores
-
+ --creating a table for scores
 CREATE TABLE scores (
     id INTEGER GENERATED ALWAYS AS IDENTITY, 
 	game_id INTEGER,
@@ -47,9 +45,7 @@ CREATE TABLE scores (
     PRIMARY KEY (id)
 );
 
-
 --inserting some scores
-
 INSERT INTO scores (game_id, score_date, player, score)
 VALUES
 (1, '2022-05-01', 'Jon Snow', '205689'),
