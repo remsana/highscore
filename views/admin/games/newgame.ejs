@@ -4,8 +4,8 @@
 
 <form class="row" method="post">
     <div class="col-12">
-      <label for="title" class="form-label fs-5">Titel</label>
-      <input type="text" class="form-control" id="title" name="name">
+      <label for="gameTitle" class="form-label fs-5">Titel</label>
+      <input type="text" class="form-control" id="gameTitle" name="title">
     </div>
     <div class="col-12">
       <label for="description" class="form-label fs-5">Beskrivning</label>
@@ -21,12 +21,11 @@
     
     <div class="col-12">
       <label for="inputGenre" class="form-label fs-5">Genre</label>
-      <select id="inputGenre" class="form-select" name="game_type">
-        <option selected disabled hidden value="choose">Choose Genre</option>
-        <option value="Action">Acion</option>
-        <option value="Puzzle">Puzzle</option>
-        <option value="Shooting">Shooting</option>
-        <option value="Other">Other</option>
+      <select id="inputGenre" class="form-select" name="genre">
+        <option selected disabled hidden value="choose">Välj Genre</option>
+        <% genreList.forEach(genre => { %>
+          <option name="<%=genre.genre%>"><%=genre.genre%></option>          
+          <% }) %>
       </select>
     </div>
     <div class="col-12">

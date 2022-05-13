@@ -9,15 +9,17 @@ router.get('/', async function (req, res) {
 
   // const games = req.app.locals.games;
   const sql = `
-    SELECT id,
-           name,
-           EXTRACT(YEAR FROM launch_year) as year,
-           game_type,
-           description,
-           image_url,
-           url_slug
-      FROM games
-     WHERE name ILIKE '%' || $1 || '%'
+  SELECT 
+     title,
+     EXTRACT(YEAR FROM launch_year) as year,
+     genre,
+     description,
+     image_url,
+     url_slug
+  FROM games
+  INNER JOIN genre
+     ON games.genre_id = genre.id
+    WHERE title ILIKE '%' || $1 || '%'
   `;
 
   const result = await db.query(sql, [searchTerm]);

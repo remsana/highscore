@@ -4,10 +4,10 @@
     <form class="row" method="post">
       <div class="col-12">
         <label for="inputGame" class="form-label fs-5">Spel</label>
-        <select id="inputGame" class="form-select" name="name">
+        <select id="inputGame" class="form-select" name="title">
           <option selected disabled hidden value="choose">Välj spel</option>
           <% games.forEach(game => { %>
-            <option name="<%=game.name%>"><%=game.name%></option>          
+            <option name="<%=game.title%>"><%=game.title%></option>          
             <% }) %>
                     
         </select>

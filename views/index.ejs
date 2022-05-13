@@ -3,9 +3,9 @@
   <h1 class="text-center mb-4">Highscores</h1>
   <div class="game-card">
     <% scores.forEach(score => { %>
-      <a href="/games/<%= score.url_slug %>">
+      <a href="/games/<%= score.url_slug %>" class="links">
     <div class="row game-card-row">
-      <p class="col-9 fs-3 fw-bold"><%= score.name %></p>
+      <p class="col-9 fs-3 fw-bold"><%= score.title %></p>
       <p class="col-3 text-end fs-3 fw-bold"><%= score.score.toLocaleString("fi-FI") %></p>
       <div class="row">
         <p class="fs-4"><%= score.player %>, <%= score.score_date %></p>

@@ -1,37 +1,26 @@
 -- creating a table for games
---i have made the nme unique so the url slug wont be the same.
+--i have made the title unique so the url slug wont be the same.
 CREATE TABLE games (
-Id INTEGER GENERATED ALWAYS AS IDENTITY,
-name VARCHAR (50) NOT NULL,
+id INTEGER GENERATED ALWAYS AS IDENTITY,
+title VARCHAR (50) NOT NULL,
 launch_year DATE NOT NULL,
-game_type VARCHAR (50) NOT NULL,
+genre_id INTEGER,
 description VARCHAR (250) NOT NULL,
 image_url VARCHAR (250) NOT NULL,
 url_slug VARCHAR (50) NOT NULL,
 PRIMARY KEY (id),
-UNIQUE (name)
+UNIQUE (title),
+FOREIGN KEY (genre_id)
+    REFERENCES genre (id)
 );
 
 --Inserting games 
---inserted 3 games to begin with
-
-INSERT INTO games (name, launch_year, game_type, description, image_url, url_slug)
+INSERT INTO games (title, launch_year, genre_id, description, image_url, url_slug)
 VALUES
-('Tetris', '01-01-1984', 'Puzzle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'https://via.placeholder.com/280x280.png?text=Tetris','tetris'),
-('Pac-Man', '01-01-1980', 'Arcade', 'Cras luctus sollicitudin justo eu accumsan. ', 'https://via.placeholder.com/280x280.png?text=Pac-man', 'pacman'),
-('Cabal', '01-01-2005', 'Shooting', 'Praesent iaculis lorem purus, vitae pellentesque orci finibus.', 'https://via.placeholder.com/280x280.png?text=Cabal', 'cabal')
+('Tetris', '01-01-1984', 6 , 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'https://via.placeholder.com/280x280.png?text=Tetris','tetris'),
+('Pac-Man', '01-01-1980', 1 , 'Cras luctus sollicitudin justo eu accumsan. ', 'https://via.placeholder.com/280x280.png?text=Pac-man', 'pacman'),
+('Cabal', '01-01-2005', 9, 'Praesent iaculis lorem purus, vitae pellentesque orci finibus.', 'https://via.placeholder.com/280x280.png?text=Cabal', 'cabal')
 
-
---the extract funcion has been used to extract only year.
-SELECT 
-    id,
-    name,
-    EXTRACT(YEAR FROM launch_year) launch_year,
-    game_type,
-    description,
-    image_url,
-    url_slug
- FROM games
 
  --creating a table for scores
 CREATE TABLE scores (
@@ -59,9 +48,13 @@ VALUES
 (3, '2021-10-30', 'Jake Doe', '2582689')
 
 --Genre Look-up table
-
 CREATE TABLE genre (
     id INTEGER GENERATED ALWAYS AS IDENTITY,
     genre VARCHAR (50) NOT NULL,
     PRIMARY KEY (id)
 )
+
+--inserting some genres
+INSERT INTO genre (genre)
+VALUES
+('Action'), ('Adventure'), ('Fighting'),('Misc'),('Platform'),('Puzzle'),('Racing'), ('Role-playing'), ('Shooter'), ('Simulation'),('Sports'),('Strategy')

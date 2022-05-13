@@ -9,9 +9,9 @@ router.get("/:urlSlug", async function (req, res) {
 
   const sql = `
   SELECT   
-    name,
+    title,
     EXTRACT(YEAR FROM launch_year) as year,
-    game_type,
+	  genre,
     description,
     image_url,
     url_slug,
@@ -21,6 +21,8 @@ router.get("/:urlSlug", async function (req, res) {
     FROM games g
     LEFT JOIN scores s
     ON g.id = s.game_id
+	LEFT JOIN genre
+    ON g.genre_id = genre.id
   WHERE url_slug = $1
   ORDER BY score DESC
 	LIMIT 10`;
@@ -29,7 +31,7 @@ router.get("/:urlSlug", async function (req, res) {
   const game = result.rows[0];
   const games = result.rows;
 
-  res.render("games/details", { title: game.name, games, game });
+  res.render("games/details", { title: game.title, games, game });
 });
 
 router.get("/", function (req, res) {

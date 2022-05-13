@@ -8,7 +8,7 @@ router.get("/", async function (req, res) {
   
   const sql = `
   SELECT
-  DISTINCT ON (name) name,
+  DISTINCT ON (title) title,
     score, 
     player,
     TO_CHAR(score_date,'YYYY-MM-DD') score_date,
@@ -18,7 +18,7 @@ router.get("/", async function (req, res) {
   INNER JOIN games g
   ON s.game_id = g.id
   ORDER BY
-    name, score DESC
+    title, score DESC
   `;
 
   const result = await db.query(sql);

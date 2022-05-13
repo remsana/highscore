@@ -3,8 +3,9 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.links {
+   text-decoration: none;
+   color: black;
 }
 
 .site-footer, .site-header, .divContainer {
@@ -54,8 +55,7 @@ width: 280px;
 }
 
 .image-search {
-
-  height: 80px;
+height: 80px;
 width: 80px;
 }
 

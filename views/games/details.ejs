@@ -8,8 +8,8 @@
       </div>
       <div class="col-8">
         <div class="row">
-          <p class="col-8 fs-5 fw-bold"><%= game.name %></p>
-          <p class="col-8"><%= game.year %>, <%= game.game_type %></p>
+          <p class="col-8 fs-5 fw-bold"><%= game.title %></p>
+          <p class="col-8"><%= game.year %>, <%= game.genre %></p>
           <p class="col-8"><%= game.description %></p>
         </div>
       </div>
@@ -31,7 +31,7 @@
             </div>
             <% }) %>    
        <% } else { %>
-        <p class="col-10">Det finns inga highscore for <%= game.name %></p>
+        <p class="col-10">Det finns inga highscore for <%= game.title %></p>
        <% } %>
             
       </div>

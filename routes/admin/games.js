@@ -7,11 +7,15 @@ router.get("/", async function (req, res) {
   const db = req.app.locals.db;
 
   const sql = `
-    SELECT id,
-           name,
-           EXTRACT(YEAR FROM launch_year) as year,
-           game_type           
-    FROM games
+  SELECT 
+    games.id id,
+    title,
+    EXTRACT(YEAR FROM launch_year) as year,
+    genre		   
+  FROM games
+  INNER JOIN genre
+  ON games.genre_id = genre.id
+  ORDER BY games.id ASC 
     `;
 
   const result = await db.query(sql);
@@ -23,8 +27,22 @@ router.get("/", async function (req, res) {
 // GET http://localhost:3000/admin/games/newgame => leads to newgame.ejs
 //Admin new game page
 router.get("/newgame", async function (req, res) {
+
+  const db = req.app.locals.db;
+
+  const sql = `
+  SELECT     
+    genre		   
+  FROM genre  
+  ORDER BY genre ASC 
+    `;
+
+  const result = await db.query(sql);
+  const genreList = result.rows;
+
   res.render("admin/games/newgame", {
     title: "Admin - Nytt Spel",
+    genreList
   });
 });
 
@@ -33,15 +51,23 @@ router.get("/newgame", async function (req, res) {
 router.post("/newgame", async function (req, res) {
   const db = req.app.locals.db;
 
-  const { name, description, image_url, game_type, launch_year } = req.body;
+  const { title, description, image_url, launch_year, genre } = req.body;
+
+  const sql = `
+  SELECT id 
+   FROM genre 
+WHERE genre = $1
+`
+const result = await db.query(sql, [genre]);
+const genre_id = result.rows[0].id;
 
   const newGame = {
-    name,
+    title,
     description,
     image_url,
-    game_type,
+    genre_id,
     launch_year,
-    url_slug: generateURLSlug(name),
+    url_slug: generateURLSlug(title),
   };
 
   await saveGame(newGame, db);
@@ -56,10 +82,10 @@ router.get("/newscore", async function (req, res) {
 
   const sql = `
    SELECT DISTINCT 
-       name
+       title
    FROM games
    ORDER BY 
-       name ASC
+       title ASC
       `;
 
   const result = await db.query(sql);
@@ -77,15 +103,15 @@ router.get("/newscore", async function (req, res) {
 router.post("/newscore", async function (req, res) {
 
   const db = req.app.locals.db;
-  const { score_date, player, score, name } = req.body;
+  const { score_date, player, score, title } = req.body;
 
   const sql = `
   select id 
     from games 
-  where name = $1
+  where title = $1
       `;
 
-  const result = await db.query(sql, [name]);
+  const result = await db.query(sql, [title]);
   const game_id = result.rows[0].id;
 
   const newScore = {
@@ -106,19 +132,19 @@ router.post("/newscore", async function (req, res) {
 function saveGame(newGame, db) {
   const sql = `
 INSERT INTO games (
-  name,
+  title,
   description,
   launch_year,
-  game_type,
+  genre_id,
   image_url,
   url_slug
 ) VALUES ($1, $2, $3, $4, $5, $6)`;
 
   const result = db.query(sql, [
-    newGame.name,
+    newGame.title,
     newGame.description,
     newGame.launch_year,
-    newGame.game_type,
+    newGame.genre_id,
     newGame.image_url,
     newGame.url_slug,
   ]);
@@ -145,8 +171,8 @@ function saveScore(newScore, db) {
 }
 
 //For generating URL slug programatically
-function generateURLSlug(name) {
-  return name.replace(/-/g, "").replace(/ /g, "-").toLowerCase();
+function generateURLSlug(title) {
+  return title.replace(/-/g, "").replace(/ /g, "-").toLowerCase();
 }
 
 module.exports = router;
