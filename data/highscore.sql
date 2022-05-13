@@ -17,9 +17,9 @@ UNIQUE (name)
 
 INSERT INTO games (name, launch_year, game_type, description, image_url, url_slug)
 VALUES
-('Tetris', '01-01-1984', 'Puzzle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'https://via.placeholder.com/80x80.png?text=Tetris','tetris'),
-('Pac-Man', '01-01-1980', 'Arcade', 'Cras luctus sollicitudin justo eu accumsan. ', 'https://via.placeholder.com/80x80.png?text=Pac-man', 'pacman'),
-('Cabal', '01-01-2005', 'Shooting', 'Praesent iaculis lorem purus, vitae pellentesque orci finibus.', 'https://via.placeholder.com/80x80.png?text=Cabal', 'cabal')
+('Tetris', '01-01-1984', 'Puzzle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'https://via.placeholder.com/280x280.png?text=Tetris','tetris'),
+('Pac-Man', '01-01-1980', 'Arcade', 'Cras luctus sollicitudin justo eu accumsan. ', 'https://via.placeholder.com/280x280.png?text=Pac-man', 'pacman'),
+('Cabal', '01-01-2005', 'Shooting', 'Praesent iaculis lorem purus, vitae pellentesque orci finibus.', 'https://via.placeholder.com/280x280.png?text=Cabal', 'cabal')
 
 
 --the extract funcion has been used to extract only year.
@@ -58,3 +58,10 @@ VALUES
 (3, '2022-04-29', 'Jim Snow', '966689'),
 (3, '2021-10-30', 'Jake Doe', '2582689')
 
+--Genre Look-up table
+
+CREATE TABLE genre (
+    id INTEGER GENERATED ALWAYS AS IDENTITY,
+    genre VARCHAR (50) NOT NULL,
+    PRIMARY KEY (id)
+)

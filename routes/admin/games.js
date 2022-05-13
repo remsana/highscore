@@ -146,7 +146,7 @@ function saveScore(newScore, db) {
 
 //For generating URL slug programatically
 function generateURLSlug(name) {
-  return name.replace("-", "").replace(" ", "-").toLowerCase();
+  return name.replace(/-/g, "").replace(/ /g, "-").toLowerCase();
 }
 
 module.exports = router;
