@@ -18,8 +18,8 @@ router.get("/:urlSlug", async function (req, res) {
     player,
     TO_CHAR(score_date,'YYYY-MM-DD') score_date,
     score
-    FROM games g
-    LEFT JOIN scores s
+  FROM games g
+  LEFT JOIN scores s
     ON g.id = s.game_id
 	LEFT JOIN genre
     ON g.genre_id = genre.id
@@ -35,7 +35,10 @@ router.get("/:urlSlug", async function (req, res) {
 });
 
 router.get("/", function (req, res) {
-  res.render("games/index", { title: "Highscore" });
+  res.render("games/index", 
+  { 
+    title: "Highscore" 
+  });
 });
 
 module.exports = router;

@@ -49,14 +49,15 @@ router.get("/newgame", async function (req, res) {
 // POST http://localhost:3000/admin/games/newgame Once the button is clicked the page redirects to /admin/games
 //Admin new gamepage then redirects to admin home page
 router.post("/newgame", async function (req, res) {
+
   const db = req.app.locals.db;
 
   const { title, description, image_url, launch_year, genre } = req.body;
 
   const sql = `
   SELECT id 
-   FROM genre 
-WHERE genre = $1
+    FROM genre 
+  WHERE genre = $1
 `
 const result = await db.query(sql, [genre]);
 const genre_id = result.rows[0].id;
@@ -132,13 +133,14 @@ router.post("/newscore", async function (req, res) {
 function saveGame(newGame, db) {
   const sql = `
 INSERT INTO games (
-  title,
-  description,
-  launch_year,
-  genre_id,
-  image_url,
-  url_slug
-) VALUES ($1, $2, $3, $4, $5, $6)`;
+   title,
+   description,
+   launch_year,
+   genre_id,
+   image_url,
+   url_slug
+) 
+VALUES ($1, $2, $3, $4, $5, $6)`;
 
   const result = db.query(sql, [
     newGame.title,
@@ -149,8 +151,6 @@ INSERT INTO games (
     newGame.url_slug,
   ]);
 }
-
-//TODO: fix the game_id For now it is hard coded
 
 //save the new scores
 function saveScore(newScore, db) {

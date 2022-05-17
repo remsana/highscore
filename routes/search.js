@@ -3,11 +3,10 @@ var router = express.Router();
 
 // GET http://localhost:3000/search?q=tetris
 router.get('/', async function (req, res) {
-   const searchTerm = req.query.q;
+  const searchTerm = req.query.q;
 
   const db = req.app.locals.db;
 
-  // const games = req.app.locals.games;
   const sql = `
   SELECT 
      title,
