@@ -15,6 +15,9 @@ var gamesRouter = require("./routes/games");
 //admin router
 var gamesAdminRouter = require("./routes/admin/games");
 
+//API
+var gamesApiRouter = require("./routes/api/games");
+
 var app = express();
 
 //to communicate with postgres
@@ -46,6 +49,9 @@ app.use("/search", searchRouter);
 app.use("/games", gamesRouter);
 
 app.use("/admin/games", gamesAdminRouter);
+
+//API
+app.use("/api/games", gamesApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
